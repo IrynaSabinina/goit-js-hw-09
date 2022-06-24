@@ -9,11 +9,13 @@ let timerId = null;
 startBtn.addEventListener('click', changeBodyColor);
 stoptBtn.addEventListener('click', () => {
   clearInterval(timerId);
-  startBtn.classList.remove('disabled');
+  stoptBtn.disabled = true;
+  startBtn.disabled = false;
 });
 
 function changeBodyColor() {
-  startBtn.classList.add('disabled');
+  startBtn.disabled = true;
+  stoptBtn.disabled = false;
   timerId = setInterval(() => {
     let colornew = getRandomHexColor();
     bodyEl.style.backgroundColor = colornew;
