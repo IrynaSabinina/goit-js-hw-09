@@ -1,1 +1,0 @@
-{"mappings":"AAQgB,IAAIA","sources":["src/js/03-promises.js"],"sourcesContent":["function createPromise(position, delay) {\n  const shouldResolve = Math.random() > 0.3;\n  if (shouldResolve) {\n  } else {\n    // Reject\n  }\n}\n\nconst promise = new Promise();\n"],"names":["Promise"],"version":3,"file":"03-promises.b2b8a64a.js.map"}
