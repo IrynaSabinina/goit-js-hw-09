@@ -10,7 +10,7 @@ const hoursSpanEl = document.querySelector('span[data-hours]');
 const minutesSpanEl = document.querySelector('span[data-minutes]');
 const secondsSpanEl = document.querySelector('span[data-seconds]');
 let timerId = null;
-
+startBtn.disabled = true;
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -20,6 +20,7 @@ const options = {
     // console.log(selectedDates[0].getTime());
     if (selectedDates[0].getTime() > Date.now()) {
       setInterval(() => {
+        startBtn.disabled = false;
         const startTime = convertMs(selectedDates[0] - Date.now());
 
         daysSpanEl.textContent = startTime.days;
@@ -35,6 +36,7 @@ const options = {
       minutesSpanEl.textContent = String('00');
       secondsSpanEl.textContent = String('00');
       alert('Please choose a date in the future');
+      startBtn.disabled = true;
       return clearInterval();
     }
   },
