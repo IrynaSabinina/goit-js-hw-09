@@ -1,4 +1,4 @@
-import throttle from 'lodash.throttle';
+import '../css/common.css';
 
 const bodyEl = document.querySelector('body');
 const startBtn = document.querySelector('button[data-start]');
