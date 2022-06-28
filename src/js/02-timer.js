@@ -28,7 +28,7 @@ const options = {
       }, 1000);
       return (startBtn.disabled = false);
     } else {
-      userDateElюdisabled = true;
+      userDateEl.disabled = true;
       alert('Please choose a date in the future');
       clearInterval();
       return (startBtn.disabled = true);
