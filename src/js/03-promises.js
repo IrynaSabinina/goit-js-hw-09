@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 const formEl = document.querySelector('.form');
 
 // const delayEl = document.querySelector('[name="delay"]');
@@ -25,10 +26,10 @@ function handleSubmit(evt) {
     setTimeout(() => {
       createPromise(position, delayNew)
         .then(({ position, delay }) => {
-          console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+          Notiflix.prompt(`✅ Fulfilled promise ${position} in ${delay}ms`);
         })
         .catch(({ position, delay }) => {
-          console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+          Notiflix.prompt(`❌ Rejected promise ${position} in ${delay}ms`);
         });
     }, delayNew);
   }
