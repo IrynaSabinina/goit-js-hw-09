@@ -10,34 +10,48 @@ const hoursSpanEl = document.querySelector('span[data-hours]');
 const minutesSpanEl = document.querySelector('span[data-minutes]');
 const secondsSpanEl = document.querySelector('span[data-seconds]');
 startBtn.disabled = true;
+let userData;
+// console.log(userData);
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    startBtn.disabled = false;
-
-    if (selectedDates[0].getTime() > Date.now()) {
-      setInterval(() => {
-        const startTime = convertMs(selectedDates[0] - Date.now());
-        daysSpanEl.textContent = startTime.days;
-        hoursSpanEl.textContent = startTime.hours;
-        minutesSpanEl.textContent = startTime.minutes;
-        secondsSpanEl.textContent = startTime.seconds;
-      }, 1000);
-      return (startBtn.disabled = false);
-    } else {
-      userDateEl.disabled = true;
-      alert('Please choose a date in the future');
-      clearInterval();
-      startBtn.disabled = true;
-      return;
+    console.log(userData);
+    userData = selectedDates[0];
+    console.log(userData);
+    if (userData > Date.now()) {
+      startBtn.disabled = false;
+      // userDateEl.disabled = true;
     }
   },
 };
 
 flatpickr(userDateEl, options);
+
+console.log(userData);
+startBtn.addEventListener('click', startTimer);
+
+function startTimer() {
+  console.log(userData);
+
+  if (userData > Date.now()) {
+    setInterval(() => {
+      const startTime = convertMs(userData - Date.now());
+      daysSpanEl.textContent = startTime.days;
+      hoursSpanEl.textContent = startTime.hours;
+      minutesSpanEl.textContent = startTime.minutes;
+      secondsSpanEl.textContent = startTime.seconds;
+    }, 1000);
+    startBtn.disabled = true;
+    userDateEl.disabled = true;
+  } else {
+    alert('Please choose a date in the future');
+    clearInterval();
+    startBtn.disabled = true;
+  }
+}
 
 function pad(value) {
   return String(value).padStart(2, '0');
