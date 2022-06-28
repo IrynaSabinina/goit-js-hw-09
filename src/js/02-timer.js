@@ -24,6 +24,8 @@ const options = {
     if (userData > Date.now()) {
       startBtn.disabled = false;
       // userDateEl.disabled = true;
+    } else {
+      alert('Please choose a date in the future');
     }
   },
 };
@@ -47,7 +49,6 @@ function startTimer() {
     startBtn.disabled = true;
     userDateEl.disabled = true;
   } else {
-    alert('Please choose a date in the future');
     clearInterval();
     startBtn.disabled = true;
   }
