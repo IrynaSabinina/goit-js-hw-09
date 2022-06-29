@@ -56,7 +56,11 @@ function startTimer() {
 }
 
 function pad(value) {
-  return String(value).padStart(2, '0');
+  if (value > 0) {
+    return String(value).padStart(2, '0');
+  } else {
+    return String(00).padStart(2, '0');
+  }
 }
 
 function convertMs(ms) {
