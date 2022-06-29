@@ -26,6 +26,7 @@ const options = {
       // userDateEl.disabled = true;
     } else {
       alert('Please choose a date in the future');
+      return;
     }
   },
 };
